@@ -156,6 +156,77 @@ h1 {
 .delete-btn:hover {
   background-color: #c0392b;
 }
+/* Snackbar container fixed top-right */
+.snackbar-container {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 320px;
+  width: 100%;
+  pointer-events: none; /* allow clicks to pass through except on toasts */
+}
+
+/* Individual snackbar/toast style */
+.snackbar {
+  pointer-events: auto; /* enable interaction */
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 16px;
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideIn 0.4s forwards, fadeOut 0.4s 2.6s forwards;
+  user-select: none;
+  cursor: default;
+}
+
+/* Types of messages */
+.snackbar.success {
+  background-color: #4caf50;
+}
+
+.snackbar.error {
+  background-color: #e74c3c;
+}
+
+.snackbar.warning {
+  background-color: #f39c12;
+}
+
+.snackbar.info {
+  background-color: #2196f3;
+}
+
+/* Animations */
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Responsive for mobile: slightly smaller font */
+@media (max-width: 480px) {
+  .snackbar {
+    font-size: 14px;
+    padding: 10px 15px;
+    max-width: 280px;
+  }
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 500px) {
